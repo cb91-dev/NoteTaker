@@ -68,7 +68,6 @@ const closeModel = () => {
     open.value = false
 }
 
-
 const handleKeyBoard = e => {
      if(e.key === "Escape") closeModel()
 }
@@ -80,7 +79,4 @@ onMounted(() => {
 onUnmounted(() => {
     document.removeEventListener('keyup', handleKeyBoard)
 })
-
-
-
 </script>

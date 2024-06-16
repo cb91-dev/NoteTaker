@@ -1,42 +1,37 @@
 <template>
+  <div>
     <div>
-        <div>
-        <AddEditNote 
-                v-model="newNote"
-                bgColor="300"
-                ref="addEditNoteRef">
-            <template v-slot:buttons>
-                <button @click="addNewNote" :disabled="!newNote" 
-                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-400 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Add New Note</button>
-            </template>
-        </AddEditNote>
+      <AddEditNote 
+        v-model="newNote"
+        bgColor="300"
+        ref="addEditNoteRef">
+        <template v-slot:buttons>
+          <button @click="addNewNote" :disabled="!newNote" 
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-400 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Add New Note
+          </button>
+        </template>
+      </AddEditNote>
     </div>
-    <!-- Loading -->
-    <div v-if="!storeNotes.notesLoaded"    
-        class="w-full px-3 rounded-full h-2.5">
-        <div class="progress-green bg-green-400 h-2.5 rounded-full" style="width: 100%"></div>
-    </div>
+  <!-- Loading -->
+  <div v-if="!storeNotes.notesLoaded" class="w-full px-3 rounded-full h-2.5">
+    <div class="progress-green bg-green-400 h-2.5 rounded-full" style="width: 100%" />
+  </div>
     <template v-else>
-        <Notes 
+      <Notes 
         v-for="note in storeNotes.notes" 
         :id="note.id"
         :note="note" 
         :key="note.id" 
         class="shadow bg-white rounded page-layout  py-5"
-        />
+      />
         <div v-if="!storeNotes.notes.length">
-            <p class="py-3 text-xl text-gray-400 text-center">You have no current notes, get going !!</p>
-        </div>
+        <p class="py-3 text-xl text-gray-400 text-center">
+          You have no current notes, get going !!
+        </p>
+      </div>
     </template>
-</div>
-
-
+  </div>
 </template>
-
-
-
-
-
 
 <script setup>
 // Imports
@@ -46,7 +41,6 @@ import Notes from '../components/notes/Notes.vue'
 import AddEditNote from '../components/notes/AddEditNote.vue'
 import { useWatchCharacters } from '@/use/useWatchCharacters'
 
-
 // Taking value from new note
 const newNote = ref('')
 // Used to refocus text area after submit
@@ -54,7 +48,6 @@ const addEditNoteRef = ref(null)
 
 // Store 
 const storeNotes = useStoreNotes()
-
 
 //  add new note to user
 const addNewNote = () => {
@@ -67,11 +60,6 @@ const addNewNote = () => {
 
 // Watch Character
 useWatchCharacters(newNote)
-
-
-
-
-
 </script>
 
 

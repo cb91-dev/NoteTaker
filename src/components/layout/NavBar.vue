@@ -45,8 +45,6 @@ import router from '../../router';
 import { ref } from 'vue';
 import { useStoreAuth } from '@/stores/storeAuth'
 
-
-
 // Store
 const storeAuth = useStoreAuth()
 
@@ -57,11 +55,8 @@ const navigation = [
 // state for mobile menu
 const open = ref(null)
 
-
-
 // REF for nav menu when logged out
 const navMenuOpener = ref(false)
-
 
 // close mobile menu after href clicked
 const mobileNavMenuCloser = (href,close) =>{
@@ -75,9 +70,7 @@ const logOut = () => {
   console.log(navMenuOpener.value)
   storeAuth.logOutUser()
   storeAuth.setMenu(navMenuOpener.value)
-
 }
-
 </script>
 
 
@@ -98,5 +91,4 @@ font-size: xx-large;
     width: 100%;
   }
 }
-
 </style>

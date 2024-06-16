@@ -1,12 +1,8 @@
 // stores/counter.js
 import { defineStore } from 'pinia'
-import {v4 as uuidv4} from 'uuid'
 import { collection, onSnapshot, doc, deleteDoc,updateDoc,query, orderBy, addDoc } from "firebase/firestore";
 import { db } from '@/js/firebase'
 import {useStoreAuth} from '@/stores/storeAuth'
-import { useThrottledRefHistory } from '@vueuse/core';
-
-
 
 let notesCollectionRef
 let notesCollectionQuery 
@@ -16,18 +12,6 @@ export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
     return { 
         notes: [
-            // {
-            //     id:'id1',
-            //     content:'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex incidunt fuga deserunt, facere ratione recusandae autem reprehenderit nesciunt explicabo delectus? Excepturi possimus unde amet earum a harum dolorum? Qui, omnis.'
-            // },
-            //  {
-            //     id:'id2',
-            //     content:'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
-            // },
-            //  {
-            //     id:'id3',
-            //     content:'Last note my guy!'
-            // }
         ],
         notesLoaded: false,
     }
